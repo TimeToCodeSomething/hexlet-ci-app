@@ -7,7 +7,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 'lts/*'
 
       - name: Setup project
         run: make setup
@@ -17,3 +23,6 @@ jobs:
 
       - name: Run linter
         run: make lint
+
+      - name: Hello from Hexlet
+        uses: hexlet-components/hello-from-hexlet-action@release
